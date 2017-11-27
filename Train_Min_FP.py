@@ -28,9 +28,6 @@ def readDATA(N):
 
 
     feature_columns = df.columns[1:]
-    #for i, f in zip(np.arange(1, len(feature_columns) + 1), feature_columns):
-    #    print('feature {:d}:\t{}'.format(i, f))
-
 
     #Check chi2 significance of 22 features    
     from sklearn.feature_selection import chi2, SelectKBest
