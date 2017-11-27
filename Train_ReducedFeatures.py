@@ -26,22 +26,14 @@ def readDATA(N):
     ##remove the feature with missing values
     df = df.drop('stalk-root',1)
 
-    # distribution of data
-    #%matplotlib inline
-    #f, axe = plt.subplots(figsize=(8,8))
-    #_ = sns.countplot(x='class', data=df, ax=axe)
+
 
 
     feature_columns = df.columns[1:]
     for i, f in zip(np.arange(1, len(feature_columns) + 1), feature_columns):
         print('feature {:d}:\t{}'.format(i, f))
 
-    #Draw 2-class hist-gram for every feature
-    #plt.style.use('ggplot')
-    #fig, axes = plt.subplots(nrows=11, ncols=2, figsize=(8, 60))
-    #df['id'] = np.arange(1, df.shape[0] + 1)
-    #for f, ax in zip(feature_columns, axes.ravel()):
-    #    df.groupby(['class', f])['id'].count().unstack(f).plot(kind='bar', ax=ax, legend=False, grid=True, title=f)
+
 
     #Check chi2 significance of 22 features    
     from sklearn.feature_selection import chi2, SelectKBest
@@ -54,10 +46,10 @@ def readDATA(N):
     
     chi_statics, p_values = chi2(numeric_data, df['class'])
 
-    chi2_result = pd.DataFrame({'features': feature_columns, 'chi2_statics': chi_statics, 'p_values': p_values})
+    chi2_result = pd.DataFrame({'features': feature_columns, 'chi2_statics': chi_statics})
     chi2_result.dropna(axis=0, how='any', inplace=True)
 
-    print(chi2_result.sort_values(by='chi2_statics', ascending=False)[['features', 'chi2_statics', 'p_values']].reset_index().drop('index', axis=1))
+    print(chi2_result.sort_values(by='chi2_statics', ascending=False)[['features', 'chi2_statics']].reset_index().drop('index', axis=1))
     %matplotlib inline
     _ = chi2_result.sort_values(by='chi2_statics', ascending=True).set_index('features')['chi2_statics'].plot(kind='barh', logx=True, rot=-2)    
     
