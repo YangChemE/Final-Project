@@ -48,7 +48,50 @@ tn:  2297 fp:  0 fn: 0 tp:  141
 Precision:  1.0 Recall : 1.0 F1:  1.0
 
 
-As there is almost no space to improve the performance of models, the next step I did was trying to reduce the dimensions of data. Data was trained for 10 times by using 1 to 10 most important features according to the ranking obtained above. Plot of accuracy for each algorithms against number of important features was made, then I decide to use 6 most important features, because, 6 most important feature give fairly high accuracy and beyond which there is no significant increase of accuracy. 
+As there is almost no space to improve the performance of models, the next step I did was trying to reduce the dimensions of data. Data was trained for 10 times by using 1 to 10 most important features according to the ranking obtained above. 
+Plot of accuracy for each algorithms against number of important features was made, then I decide to use 6 most important features, because, 6 most important feature give fairly high accuracy and beyond which there is no significant increase of accuracy. 
+Results as following:
+
+top  6  most useful features are:
+gill-color
+ring-type
+gill-size
+bruises
+gill-spacing
+habitat
+
+Default Logistic Regression: training accuracy:  0.934605323896  testing accuracy:  0.936615384615
+[[791  34]
+ [ 69 731]]
+tn:  791 fp:  34 fn: 69 tp:  731
+Precision:  0.955555555556 Recall:  0.91375 F1:  0.934185303514
+
+KNN: training accuracy:  0.972611170949  testing accuracy:  0.964307692308
+[[780  45]
+ [ 13 787]]
+tn:  780 fp:  45 fn: 13 tp:  787
+Precision:  0.945913461538 Recall:  0.98375 F1:  0.964460784314
+
+Default NN: training accuracy:  0.983228188952  testing accuracy:  0.985846153846
+[[821   4]
+ [ 19 781]]
+tn:  821 fp:  4 fn: 19 tp:  781
+Precision:  0.994904458599 Recall : 0.97625 F1:  0.985488958991
+
+Default Decision Tree: training accuracy:  0.983228188952  testing accuracy:  0.985846153846
+[[821   4]
+ [ 19 781]]
+tn:  821 fp:  4 fn: 19 tp:  781
+Precision:  0.994904458599 Recall : 0.97625 F1:  0.985488958991
+
+Deafult Naive Bayes: training accuracy:  0.920295430066  testing accuracy:  0.92
+[[785  40]
+ [ 90 710]]
+tn:  785 fp:  40 fn: 90 tp:  710
+Precision:  0.946666666667 Recall : 0.8875 F1:  0.916129032258
+
+
+
 With lower dimension of data, it is not possible to achieve 100% accuracy anymore. Therefore, considering the practical significance of the classfication, we want to choose a model that gives high predicion accuracy and low amount of false positive. Because false negative does not really hurt people but false positive might kill people. 
 The final train I did was to train the data by 5 algorithms with 6 most important features for 100 times and I calculated the average of Accuracy and average of false positive. I found that, among 5 algorithms, the Decision Tree gives the lowest false positive, and interestingly, highest accuracy at the same time (~98.4%). 
 
