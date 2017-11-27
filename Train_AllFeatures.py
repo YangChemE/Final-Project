@@ -62,10 +62,10 @@ def readDATA():
     
     chi_statics, p_values = chi2(numeric_data, df['class'])
 
-    chi2_result = pd.DataFrame({'features': feature_columns, 'chi2_statics': chi_statics, 'p_values': p_values})
+    chi2_result = pd.DataFrame({'features': feature_columns, 'chi2_statics': chi_statics})
     chi2_result.dropna(axis=0, how='any', inplace=True)
 
-    print(chi2_result.sort_values(by='chi2_statics', ascending=False)[['features', 'chi2_statics', 'p_values']].reset_index().drop('index', axis=1))
+    print(chi2_result.sort_values(by='chi2_statics', ascending=False)[['features', 'chi2_statics']].reset_index().drop('index', axis=1))
     %matplotlib inline
     _ = chi2_result.sort_values(by='chi2_statics', ascending=True).set_index('features')['chi2_statics'].plot(kind='barh', logx=True, rot=-2)    
         
