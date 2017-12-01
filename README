@@ -48,7 +48,7 @@ tn:  2297 fp:  0 fn: 0 tp:  141
 Precision:  1.0 Recall : 1.0 F1:  1.0
 
 
-As there is almost no space to improve the performance of models, the next step I did was trying to reduce the dimensions of data. Data was trained for 10 times by using 1 to 10 most important features according to the ranking obtained above. 
+As there is almost no space to improve the performance of models in terms of classification accuracy, the next step I did was trying to reduce the dimensions of data. Data was trained for 10 times by using 1 to 10 most important features according to the ranking obtained above. 
 Plot of accuracy for each algorithms against number of important features was made, then I decide to use 6 most important features, because, 6 most important feature give fairly high accuracy and beyond which there is no significant increase of accuracy. 
 Results as following:
 
